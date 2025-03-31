@@ -9,11 +9,11 @@ export function createBoard() {
     for (let i = 0; i < WIDTH; i++) {
         grid[i] = [];
         for (let j = 0; j < LENGTH; j++) {
-            grid[i][j] = createCell()
+            grid[i][j] = createCell(i, j)
         }
     }
 
-    let getBoard = () => {
+    let get = () => {
         return grid;
     }
 
@@ -29,12 +29,41 @@ export function createBoard() {
         console.log(string);
     }
 
-    return { getBoard, print }
+    let update = () => {
+        let string = ''
+        for (let i = 0; i < WIDTH; i++) {
+            for (let j = 0; j < LENGTH; j++) {
+                string += checkNeighbours(i, j);
+            }
+            string += '\n';
+        }
+        console.log(string);
+    }
+
+    let checkNeighbours = (y, x) => {
+        let aliveCount = 0;
+
+        for (let i = y - 1; i <= y + 1; i++) {
+            for (let j = x - 1; j <= x + 1; j++) {
+                if (!(i === y && j === x) && i >= 0 && i < WIDTH && j >= 0 && j < LENGTH) {
+                    if (grid[i][j].state == ALIVE) {
+                        aliveCount++;
+                    }
+                }
+            }
+        }
+        return aliveCount;
+    }
+
+    // let getNewState = () => {
+        
+    // }
+
+    return { get, print, update }
 }
 
-function createCell() {
-    let generateState = () => Math.floor(Math.random() * 2) === 0 ? ALIVE : DEAD;
-    let state = generateState()
-    
+function createCell(y, x) {
+    let state = Math.floor(Math.random() * 2) === 0 ? ALIVE : DEAD;
+
     return { state }
 }
