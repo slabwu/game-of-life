@@ -33,14 +33,14 @@ export function createBoard() {
         let string = ''
         for (let i = 0; i < WIDTH; i++) {
             for (let j = 0; j < LENGTH; j++) {
-                string += checkNeighbours(i, j);
+                string += getNewState(grid[i][j].state, getNeighbours(i, j));
             }
             string += '\n';
         }
         console.log(string);
     }
 
-    let checkNeighbours = (y, x) => {
+    let getNeighbours = (y, x) => {
         let aliveCount = 0;
 
         for (let i = y - 1; i <= y + 1; i++) {
@@ -55,9 +55,15 @@ export function createBoard() {
         return aliveCount;
     }
 
-    // let getNewState = () => {
-        
-    // }
+    let getNewState = (state, neighbours) => {
+        if (state === ALIVE && (neighbours === 2 || neighbours === 3)) {
+            return ALIVE;
+        } else if (state === DEAD && neighbours === 3) {
+            return ALIVE;
+        } else {
+            return DEAD;
+        }
+    }
 
     return { get, print, update }
 }
