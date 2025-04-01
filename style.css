@@ -6,3 +6,7 @@ body {
     display: grid;
     grid-template: repeat(10, 20px) / repeat(10, 20px);
 }
+
+#container > div {
+    background-color: black;
+}

@@ -5,15 +5,15 @@ async function main() {
     let board = createBoard();
     let display = Viewer();
     board.print();
-    display.board(board.get());
+    display.create(board.get());
 
     let update = () => {
         board.update();
-        display.board(board.get());
+        display.update(board.get());
         board.print();
     }
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 100; i++) {
         setTimeout(update, 1000 * i);
     }
 }

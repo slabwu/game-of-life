@@ -1,21 +1,36 @@
+let LENGTH = 10;
+let ALIVE = 'O';
+
 export function Viewer() {
-    const board = (grid) => {
+    const create = (grid) => {
         $('container').innerHTML = '';
-        for (let y of grid) {
-            for (let x of y) {
-                addElement('div', $('container'), x.state);
-            }
-        }
+        grid.forEach((y, yIndex) => {
+            y.forEach((x, xIndex) => {
+                let index = yIndex * LENGTH + xIndex;
+                addCell('div', $('container'), index);
+                select(index).style.backgroundColor = grid[yIndex][xIndex].state === ALIVE ? 'lime': 'black';
+            })
+        })
     }
 
-    return { board }
+    const update = (grid) => {
+        grid.forEach((y, yIndex) => {
+            y.forEach((x, xIndex) => {
+                let index = yIndex * LENGTH + xIndex;
+                select(index).style.backgroundColor = grid[yIndex][xIndex].state === ALIVE ? 'lime': 'black';
+            })
+        })
+    }
+
+    return { create, update }
 }
 
 const $ = (id) => document.getElementById(id);
+const select = (id) => document.querySelector(`[data-id="${id}"]`);
 
-function addElement(type, source, content = '') {
+function addCell(type, source, id) {
     const element = document.createElement(`${type}`);
-    element.innerHTML = `${content}`;
+    element.dataset.id = `${id}`;
     source.appendChild(element);
     return element;
 }
