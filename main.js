@@ -13,7 +13,7 @@ async function main() {
         //board.print();
     }
 
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 1000; i++) {
         setTimeout(update, 100 * i);
     }
 }

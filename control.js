@@ -19,10 +19,6 @@ export function createBoard() {
         return grid;
     }
 
-    let temp = () => {
-        return tmp;
-    }
-
     let print = () => {
         let string = ''
         for (let i = 0; i < HEIGHT; i++) {
@@ -69,7 +65,7 @@ export function createBoard() {
         }
     }
 
-    return { get, print, update, temp }
+    return { get, print, update }
 }
 
 function createCell(y, x) {
