@@ -8,7 +8,6 @@ export function Viewer() {
             y.forEach((x, xIndex) => {
                 let index = yIndex * LENGTH + xIndex;
                 addCell('div', $('container'), index);
-                //select(index).style.backgroundColor = grid[yIndex][xIndex].state === ALIVE ? 'lime': 'black';
             })
         })
         update(grid);
