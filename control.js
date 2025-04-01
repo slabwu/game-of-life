@@ -1,5 +1,5 @@
-const WIDTH = 10;
-const HEIGHT = 10;
+const WIDTH = 142;
+const HEIGHT = 77;
 
 const ALIVE = 'O';
 const DEAD = 'X';
@@ -17,6 +17,10 @@ export function createBoard() {
 
     let get = () => {
         return grid;
+    }
+
+    let temp = () => {
+        return tmp;
     }
 
     let print = () => {
@@ -65,7 +69,7 @@ export function createBoard() {
         }
     }
 
-    return { get, print, update }
+    return { get, print, update, temp }
 }
 
 function createCell(y, x) {

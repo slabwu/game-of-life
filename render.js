@@ -1,4 +1,4 @@
-let LENGTH = 10;
+let LENGTH = 142;
 let ALIVE = 'O';
 
 export function Viewer() {

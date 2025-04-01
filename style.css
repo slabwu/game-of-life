@@ -4,7 +4,7 @@ body {
 
 #container {
     display: grid;
-    grid-template: repeat(10, 20px) / repeat(10, 20px);
+    grid-template: repeat(77, 10px) / repeat(142, 10px);
 }
 
 #container > div {
