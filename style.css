@@ -1,3 +1,8 @@
 body {
     background-color: white;
 }
+
+#container {
+    display: grid;
+    grid-template: repeat(10, 20px) / repeat(10, 20px);
+}

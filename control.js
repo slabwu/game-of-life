@@ -34,35 +34,11 @@ export function createBoard() {
     let update = () => {
         for (let i = 0; i < HEIGHT; i++) {
             for (let j = 0; j < WIDTH; j++) {
-                //console.log(`cell x${j} y${i}, state: ${tmp[i][j].state}, neighbours: ${getNeighbours(i, j)}, newstate: ${getNewState(tmp[i][j].state, getNeighbours(i, j))}`)
                 grid[i][j].state = getNewState(tmp[i][j].state, getNeighbours(i, j));
             }
         }
         tmp = JSON.parse(JSON.stringify(grid));
     }
-
-    // let printn = () => {
-    //     let string = 'PRINTING NUMBERS\n'
-    //     for (let i = 0; i < HEIGHT; i++) {
-    //         for (let j = 0; j < WIDTH; j++) {
-    //             string += getNeighbours(i, j);
-    //         }
-    //         string += '\n';
-    //     }
-    //     console.log(string);
-    // }
-
-    // let printt = () => {
-    //     let string = 'PRINTING TEMP\n'
-    //     for (let i = 0; i < HEIGHT; i++) {
-    //         for (let j = 0; j < WIDTH; j++) {
-    //             string += tmp[i][j].state;
-    //         }
-    //         string += '\n';
-    //     }
-    //     console.log(string);
-    // }
-
 
     let getNeighbours = (y, x) => {
         let aliveCount = 0;
